@@ -2,11 +2,9 @@
 
 environments:
   - name: acceptance
-    cluster:
-      maxSize: 2
+    provider: ecs-fargate
   - name: production
-    cluster:
-      maxSize: 5
+    provider: ecs-fargate
 
 service:
   healthEndpoint: /
@@ -15,4 +13,4 @@ service:
     - /*
   pipeline:
     source:
-      repo: cplee/aftp-mu
+      repo: kalleeh/basic
