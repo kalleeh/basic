@@ -1,16 +1,28 @@
 ---
 
 environments:
-  - name: acceptance
-    provider: ecs-fargate
   - name: production
     provider: ecs-fargate
+
+    ### Attributes for the VPC to target.  If not defined, a VPC will be created. (default: none)
+    vpcTarget:
+        vpcId: vpc-0fd110352995f2a06   # The id of the VPC to launch ECS container instances into
+        instanceSubnetIds:              # The list of subnets to use for ECS container instances
+          - subnet-02ad4d542435e5cb8
+          - subnet-03cf36c271c83c722
+        elbSubnetIds:                   # The list of subnets to use for ELBs
+          - subnet-027e7f21a95d42781
+          - subnet-09f65d030b563b93e
 
 service:
   healthEndpoint: /
   port: 80
   pathPatterns:
     - /*
+  
+  # Define the behavior of the pipeline
   pipeline:
-    source:
-      repo: kalleeh/basic
+      source:
+        provider: GitHub                        # GitHub or CodeCommit (default: GitHub)
+        repo: kalleeh/basic                     # The GitHub repo slug or CodeCommit repo name to build (default: none)
+        branch: master                          # The branch to build from (default: master)
