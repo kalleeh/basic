@@ -16,6 +16,10 @@ def create_temp_file(size, file_name, file_content):
 
 app = Flask(__name__)
 
+@app.route('/health')
+def health():
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}  
+
 @app.route('/')
 @app.route('/index')
 def index():
