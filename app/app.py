@@ -52,6 +52,7 @@ def index():
             'body': 'Unexpected Error: {}'.format(e)
         })
     else:
+        app.logger.info('Successfully wrote file: {}'.format(first_file_name))
         posts.append({
             'author': {'username': 'Karl'},
             'body': 'I just wrote a new file named: {}'.format(first_file_name)
