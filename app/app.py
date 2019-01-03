@@ -54,7 +54,7 @@ def index():
     else:
         posts.append({
             'author': {'username': 'Karl'},
-            'body': 'I just wrote a new file named {}'.format(first_file_name)
+            'body': 'I just wrote a new file named: {}'.format(first_file_name)
         })
 
     return render_template('index.html', title='Home', user=user, posts=posts)
