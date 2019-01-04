@@ -38,7 +38,13 @@ def index():
 
     try:
         # upload file to your bucket
-        client.upload_file(Filename=first_file_name, Bucket='mys3-s3bucket-3alkllybxdoy', Key=first_file_name)
+        client.upload_file(
+            Filename=first_file_name,
+            Bucket='mys3-s3bucket-3alkllybxdoy',
+            Key=first_file_name,
+            ExtraArgs={'ServerSideEncryption':'aws:kms',
+                'SSEKMSKeyId':'alias/aws/s3'}
+        )
     except ClientError as e:
         if e.response['Error']['Code'] == 'AlreadyExistsException':
             app.logger.error('AlreadyExistsException: {}'.format(e))
