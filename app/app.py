@@ -50,13 +50,13 @@ def index():
             app.logger.error('AlreadyExistsException: {}'.format(e))
             posts.append({
                 'author': {'username': 'Server'},
-                'body': 'Unknown Exception {}'.format(e.text)
+                'body': 'Unknown Exception {}'.format(e)
             })
         else:
             app.logger.error('Unexpected Error: {}'.format(e))
             posts.append({
                 'author': {'username': 'Server'},
-                'body': 'Unexpected Error: {}'.format(e.text)
+                'body': 'Unexpected Error: {}'.format(e)
             })
     except Exception as e:
         app.logger.error('Unexpected Error: {}'.format(e))
