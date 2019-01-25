@@ -1,0 +1,5 @@
+service:
+  name: my-service
+  environments:
+    - dev
+    - prod
