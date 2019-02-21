@@ -32,7 +32,7 @@ def health():
 @app.route('/index')
 def index():
     posts = []
-    user = {'username': 'Karl'}
+    user = {'username': 'Karl2'}
 
     first_file_name = create_temp_file(300, 'firstfile.txt', 'f')
 
